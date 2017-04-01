@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templates/template_principal.xhtml">
+	<ui:define name="corpo">
+		<h1>Novo Usuário</h1>
+		<h:form>
+			<h:outputLabel for="nome" value="Nome: " />
+			<h:inputText class="form-control" id="nome"
+				value="#{usuarioBean.usuario.nome}" styleClass="texto-longo"
+				label="Nome" required="true">
+				<f:validateLength minimum="4" maximum="50"></f:validateLength>
+				<f:validateRegex pattern="[a-zA-z ]+"></f:validateRegex>
+			</h:inputText>
+
+			<h:outputLabel for="Login" value="Login: " />
+			<h:inputText class="form-control" id="login"
+				value="#{usuarioBean.usuario.login}" styleClass="texto-longo"
+				label="Login" required="true"
+				validatorMessage="O campo login deve ter no mínimo
+					4 letras e não pode conter números">
+
+				<f:validateLength minimum="4" maximum="22"></f:validateLength>
+				<f:validateRegex pattern="[a-zA-z.]+"></f:validateRegex>
+			</h:inputText>
+
+			<h:outputLabel for="senha" value="Senha: " />
+			<h:inputSecret class="form-control" id="senha"
+				value="#{usuarioBean.usuario.senha}" styleClass="texto-longo"
+				label="Senha" required="true">
+				<f:validator validatorId="senhaForte"></f:validator>
+			</h:inputSecret>
+
+			<div class="acoes-principais">
+
+				<h:commandLink value="Lista" action="lista" immediate="true"></h:commandLink>
+				&#160;
+				<h:commandButton value="Salvar" action="#{usuarioBean.salvar}">
+					<f:ajax execute="@form" render="@form :mensagens"></f:ajax>
+				</h:commandButton>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	
+		<title>Bug Tracker Form</title>
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</h:head>	
+<h:body>
+<div class="main">
+	<div class="container">
+		<div class="row">
+			<h:form>
+				<div class="form-group">
+	   				<h:outputLabel for="Name" value="Name: " />
+	   				<h:inputText class="form-control" id="name" />
+   				</div>
+   				
+   				<h:outputLabel for="Login" value="Login: "/>
+   				<h:inputText class="form-control" id="login" />
+   				
+   				<h:outputLabel for="Password" value="Password: "/>
+   				<h:inputSecret class="form-control" id="password" />
+   				
+   				<br></br>
+   				<h:commandButton value="Submit"></h:commandButton>
+		</h:form>
+		</div>
+	</div>
+</div>
+		
+</h:body>
+</html>

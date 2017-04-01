@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/templates/template_principal.xhtml">
+	<ui:define name="corpo">
+		<t:saveState value="#{usuarioBean.usuarios}"></t:saveState>
+		<h1>Listagem de Usuários</h1>
+		<h:form>
+			<div class="acoes-principais">
+				<h:commandLink value="Novo" action="novo"></h:commandLink>
+				&#160;
+				<h:commandButton value="Listar" action="#{usuarioBean.listar}">
+					<f:ajax execute="@form" render="@form"></f:ajax>
+				</h:commandButton>
+			</div>
+			<h:dataTable value="#{usuarioBean.usuarios}" var="usuario"
+				styleClass="dados" rowClasses="impar, par">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+						#{usuario.id}&#160;&#160;
+					</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+						#{usuario.nome}&#160;
+					</h:column>
+				<h:column>
+					<f:facet name="header">Login</f:facet>
+						#{usuario.login}&#160;
+					</h:column>
+				<h:column>
+					<f:facet name="header">Ações</f:facet>
+					<h:commandLink value="excluir"
+						action="#{usuarioBean.excluir(usuario)}">
+						<f:ajax execute="@form" render="@form :mensagens"></f:ajax>
+					</h:commandLink>
+						&#160;
+						<h:commandLink value="alterar" action="edita">
+						<f:setPropertyActionListener value="#{usuario}"
+							target="#{usuarioBean.usuario}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+
+
+
+
+
+
+
+

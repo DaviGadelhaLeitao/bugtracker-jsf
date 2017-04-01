@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Sistema de Controle de Bugs - Bug Tracker</title>
+	<h:outputStylesheet library="css" name="app.css" />
+</h:head>
+<h:body>
+
+	<div id="cabecalho">
+		<ui:insert name="cabecalho">
+			<div id="user-info">
+				<h:form>
+			#{usuarioWeb.usuario.login} - <h:commandLink value="Sair"
+						action="#{loginBean.sair}" />
+				</h:form>
+			</div>
+			<ul id="menu-principal">
+				<li><h:link value="Usuário" outcome="/pages/usuario/lista"></h:link>
+				</li>
+			</ul>
+		</ui:insert>
+	</div>
+
+	<h:messages errorClass="erros" infoClass="notice" id="mensagens" />
+
+	<div id="conteudo">
+		<div id="container">
+			<ui:insert name="corpo" />
+		</div>
+	</div>
+
+
+	<div id="rodape">
+		<div class="rodape-bar">
+			<STRONG>Bug Tracker</STRONG> - Controle de bugs | TriadWorks
+		</div>
+	</div>
+
+</h:body>
+</html>
